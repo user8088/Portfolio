@@ -25,6 +25,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     splitTextIntoSpans(".header h1");
 
+    // ---------- Epic Hero entrance ----------
+    splitTextIntoSpans(".hero-title-inner");
+    const heroLabel = document.querySelector(".hero-label");
+    const heroTitleSpans = document.querySelectorAll(".hero-title-inner span");
+    const heroLineAccent = document.querySelector(".hero-line-accent");
+    const heroTagline = document.querySelector(".hero-tagline");
+    const heroLink = document.querySelector(".hero-link");
+    const heroScroll = document.querySelector(".hero-scroll");
+    const heroLine = document.querySelector(".hero-line");
+
+    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    heroTl
+        .to(heroLabel, { y: 0, opacity: 0.7, duration: 0.8 }, 0.2)
+        .to(heroTitleSpans, {
+            y: "0%",
+            stagger: 0.06,
+            duration: 0.9,
+            ease: "power4.out",
+        }, 0.35)
+        .to(heroLineAccent, { scaleX: 1, opacity: 1, duration: 0.5 }, 0.85)
+        .to(heroTagline, { y: 0, opacity: 1, duration: 0.7 }, 0.9)
+        .to(heroLink, { y: 0, opacity: 1, duration: 0.6 }, 1.1)
+        .to(heroScroll, { y: 0, opacity: 0.8, duration: 0.5 }, 1.2)
+        .to(heroLine, { opacity: 1, duration: 0.8 }, 1.3);
+
     menuToggle.addEventListener("click", () => {
         if (isAnimating) return;
 
